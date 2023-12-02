@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do_app/widgets/counter.dart';
 import 'package:to_do_app/widgets/todo_card.dart';
 
+// class for task(todo-card)
 class Task {
   String title;
   bool status;
@@ -34,26 +35,30 @@ class ToDoApp extends StatefulWidget {
 
 class _ToDoAppState extends State<ToDoApp> {
   String taskText = "";
+
+  // create controll to get the text from textfield
   final myController = TextEditingController();
 
-  List mycolors = [100, 500, 900];
-
+  // List of todos
   List allTasks = [
     Task(title: "Create ur first task !", status: false),
   ];
 
+  // to remove todo when click on 'delete' button
   deleteTask(int taskIndex) {
     setState(() {
       allTasks.remove(allTasks[taskIndex]);
     });
   }
 
+  // to change todo status (completed or not) when click on todo widget
   changeStatus(int taskIndex) {
     setState(() {
       allTasks[taskIndex].status = !allTasks[taskIndex].status;
     });
   }
 
+  // to check how many todos are done for the counter
   int checkDone() {
     int howManyDone = 0;
     allTasks.forEach((item) {
@@ -64,6 +69,7 @@ class _ToDoAppState extends State<ToDoApp> {
     return howManyDone;
   }
 
+  // to add new task when after clicking on the floating action button and then 'add task' button
   addNewTask() {
     setState(() {
       allTasks.add(Task(title: myController.text, status: false));
@@ -121,7 +127,9 @@ class _ToDoAppState extends State<ToDoApp> {
           title: Text(
             "TO DO APP",
             style: TextStyle(
-                color: Colors.white, fontSize: 28, fontWeight: FontWeight.w600),
+                color: Colors.orange,
+                fontSize: 28,
+                fontWeight: FontWeight.w600),
           ),
           elevation: 0,
           actions: [
@@ -133,7 +141,7 @@ class _ToDoAppState extends State<ToDoApp> {
                 },
                 icon: Icon(
                   Icons.delete_forever,
-                  color: Colors.red[100],
+                  color: Colors.red[500],
                   size: 31,
                 ))
           ],
@@ -156,11 +164,13 @@ class _ToDoAppState extends State<ToDoApp> {
                         return Column(
                           children: [
                             TodoCard(
+                                // here we pass info to create the todo_card widget from "todo_card.dart"
                                 varTitle: allTasks[index].title,
                                 varStatus: allTasks[index].status,
                                 myFunc: changeStatus,
                                 xTaskIndex: index,
-                                delete: deleteTask)
+                                delete: deleteTask
+                                )
                             // ...allTasks
                             //     .map((item) => TodoCard(
                             //         varTitle: item.title, varStatus: item.status))
@@ -170,7 +180,9 @@ class _ToDoAppState extends State<ToDoApp> {
                       }),
                 )
               ]),
-            )));
+            )
+            )
+    );
   }
 }
 

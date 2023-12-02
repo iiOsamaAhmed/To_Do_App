@@ -40,8 +40,8 @@ class TodoCard extends StatelessWidget {
               children: [
                 Icon(
                   // Icons.done,
-                  varStatus ? Icons.done : Icons.close,
-                  color: varStatus ? Colors.green : Colors.red,
+                  varStatus ? Icons.check_circle_sharp : Icons.circle_outlined,
+                  color: varStatus ? Colors.green : Colors.blue[200],
                   size: 27,
                 ),
                 SizedBox(
@@ -52,7 +52,7 @@ class TodoCard extends StatelessWidget {
                     delete(xTaskIndex);
                   },
                   icon: Icon(Icons.delete),
-                  color: Colors.red[100],
+                  color: Colors.red[500],
                 )
               ],
             )

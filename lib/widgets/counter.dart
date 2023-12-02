@@ -8,7 +8,7 @@ class Counter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("${doneTasksNum} / ${allTasksNum}",
+    return Text("$doneTasksNum / $allTasksNum",
         style: TextStyle (
           color: doneTasksNum == allTasksNum ? Colors.greenAccent[200] : Colors.white,
           // color: Colors.greenAccent[200], 
